@@ -2,6 +2,8 @@ import numpy as np
 import _euler_explicit_ 
 import matplotlib.pyplot as plt
 
+#PARÀMETRES
+
 N = 101
 T_a = 0.459
 x = np.linspace(0, 1, N)
@@ -9,8 +11,10 @@ dx = x[1] - x[0]
 dt_1 = 0.51*dx**2
 dt_2 = 0.49*dx**2
 dt_3 = 0.25*dx**2
+gamma_1 = 1
+gamma_2 = 0.5
 
-
+#EULER EXPLICIT
 
 passos_t1 = round(0.025/dt_1)
 passos_t2 = round(0.025/dt_2)
@@ -67,6 +71,10 @@ plt.ylabel('T(x)')
 plt.title('Temperature distribution at t = 0.025')
 plt.legend()
 plt.show()
+
+#EULER IMPLÍCIT
+
+
 
 
 
