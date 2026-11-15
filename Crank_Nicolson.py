@@ -43,7 +43,7 @@ for t in range(passos_4):
 
 
 vector_4 = Matriu_T_4[-1]
-print(vector_4)
+#print(vector_4)
 
 #plt.scatter(x, vector_4, label='dt = dx^2', color='green')
 plt.xlabel('x')
@@ -53,3 +53,37 @@ plt.legend()
 #plt.show()
 
 # Repetim tot l'anterior per a dt_5 ------------------------------------------------------
+
+# Començarem amb una matriu plena amb T_a i anirem reescribint les files.
+Matriu_T_5 = np.full((passos_5+1, N), T_a) # La matriu ha de fer passos_4+1 passos de temps ja que la primera fila és el temps inicial.
+
+
+
+# Definim els parametres off i diag i un vector que guardarà el nombre d'iteracions
+off_5 = gamma_2/2
+diag_5 = 1 + gamma_2
+iters_5 = [0]*(passos_5+1)
+b_2 = np.zeros(N)
+
+# Comencem el bucle temporal
+
+for t in range(passos_5):
+    # Definim el vector de termes independents b que va canviant a cada pas
+    for j in range(1, N-1):
+        b_2[j] = Matriu_T_5[t][j] + (gamma_2/2)*(Matriu_T_5[t][j+1] - 2*Matriu_T_5[t][j] + Matriu_T_5[t][j-1]) + dt_5
+
+    T = Matriu_T_5[t].copy()  # punt de partida per a Gauss-Seidel
+    nou, its = gs.gauss_seidel(T, b_2, off_5, diag_5)
+    Matriu_T_5[t+1] = nou
+    iters_5[t+1] = its
+
+
+vector_5 = Matriu_T_5[-1]
+print(vector_5)
+
+plt.scatter(x, vector_5, label='dt = dx^2', color='green')
+plt.xlabel('x')
+plt.ylabel('Temperatura')   
+plt.title('Distribució de temperatura a t=0.025 amb Euler implícit')
+plt.legend()
+plt.show()
