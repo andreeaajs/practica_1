@@ -1,10 +1,13 @@
 import numpy as np
 import _euler_explicit_ 
 import matplotlib.pyplot as plt
+from solucio_analitica import T
+
 
 #PARÀMETRES
 
 N = 101
+t_a = 0.025
 T_a = 0.459
 x = np.linspace(0, 1, N)
 dx = x[1] - x[0]
@@ -16,9 +19,9 @@ gamma_2 = 0.5
 
 #EULER EXPLICIT
 
-passos_t1 = round(0.025/dt_1)
-passos_t2 = round(0.025/dt_2)
-passos_t3 = round(0.025/dt_3)
+passos_t1 = round(t_a/dt_1)
+passos_t2 = round(t_a/dt_2)
+passos_t3 = round(t_a/dt_3)
 
 
 
@@ -56,19 +59,26 @@ plt.figure()
 plt.scatter(x, vector_1, label='dt = 0.51*dx^2', color='blue')
 plt.xlabel('x')
 plt.ylabel('T(x)')
-plt.title('Temperature distribution at t = 0.025')
+plt.title('Distribució de temperatura a t=0.025 (adimensional)')
+plt.legend()
 
 plt.figure()
 plt.scatter(x, vector_2, label='dt = 0.49*dx^2', color='orange')
 plt.xlabel('x')
 plt.ylabel('T(x)')
-plt.title('Temperature distribution at t = 0.025')
+plt.title('Distribució de temperatura a t=0.025 (adimensional)')
+plt.legend()
 
 plt.figure()
 plt.scatter(x, vector_3, label='dt = 0.25*dx^2', color='green')
 plt.xlabel('x')
 plt.ylabel('T(x)')
-plt.title('Temperature distribution at t = 0.025')
+plt.title('Distribució de temperatura a t=0.025 (adimensional)')
+plt.legend()
+
+plt.figure()
+plt.title('Distribució de temperatura a t=0.025 (adimensional)')
+plt.plot(x,T(x,t_a), label='solució analítica')
 plt.legend()
 plt.show()
 
