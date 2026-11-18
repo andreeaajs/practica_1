@@ -44,7 +44,6 @@ passos_t2 = round(t_a/dt_2)
 passos_t3 = round(t_a/dt_3)
 
 
-
 matriu_1 = np.array([[T_a]*N], dtype=float)
 
 for t in range(passos_t1):
@@ -124,18 +123,5 @@ plt.title('Distribució de temperatura a $\hat{t}=0.025$ analítica')
 plt.plot(x,T(x,t_a))
 plt.xlabel('$\hat{x}$')
 plt.ylabel('$\hat{T}(\hat{x})$')
+
 plt.show()
-
-#EULER IMPLÍCIT
-
-
-
-
-
-
-
-
-
-
-
-

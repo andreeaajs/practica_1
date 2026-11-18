@@ -1,11 +1,11 @@
 # Definim la funció gauss_seidel per resoldre el sistema d'equacions lineals utilitzant 
-# el mètode de Gauss-Seidel
+# el mètode de Gauss-Seidel.
 
-# La funció té com a paràmetres d'entrada un vector T, que serà la fila de la matriu de 
-# temperatures, b que és el vector de termes independents, 
+# La funció té com a paràmetres d'entrada un vector T (que serà la fila de la matriu de 
+# temperatures), b que és el vector de termes independents, 
 # off que és el valor de la diagonal inferior i superior, 
 # diag que és el valor de la diagonal principal, tol que és la tolerància 
-# maxit que és el nombre màxim d'iteracions.
+# i maxit que és el nombre màxim d'iteracions.
 
 def gauss_seidel(T, b, off, diag, tol=1e-12, maxit=10000):
     for it in range(maxit):
