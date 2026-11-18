@@ -24,7 +24,6 @@ passos_t2 = round(t_a/dt_2)
 passos_t3 = round(t_a/dt_3)
 
 
-
 matriu_1 = np.array([[T_a]*N], dtype=float)
 
 for t in range(passos_t1):
@@ -80,18 +79,5 @@ plt.figure()
 plt.title('Distribució de temperatura a t=0.025 (adimensional)')
 plt.plot(x,T(x,t_a), label='solució analítica')
 plt.legend()
+
 plt.show()
-
-#EULER IMPLÍCIT
-
-
-
-
-
-
-
-
-
-
-
-
