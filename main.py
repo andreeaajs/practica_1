@@ -3,6 +3,26 @@ import _euler_explicit_
 import matplotlib.pyplot as plt
 from solucio_analitica import T
 
+# Perque els grafics quedin millor
+
+plt.rcParams.update({
+    "font.family": "serif",
+    "mathtext.fontset": "cm", 
+    "font.size": 10,
+    "axes.labelsize": 10,
+    "legend.fontsize": 8,
+    "xtick.labelsize": 9,
+    "ytick.labelsize": 9,
+    "xtick.direction": "in", "ytick.direction": "in",
+    "xtick.top": True, "ytick.right": True,
+    "xtick.minor.visible": True, "ytick.minor.visible": True,
+    "axes.linewidth": 0.8,
+    "lines.linewidth": 1.2,
+    "legend.frameon": False,
+    "figure.dpi": 120,
+    "savefig.bbox": "tight",
+})
+
 
 #PARÀMETRES
 
@@ -55,31 +75,55 @@ vector_1 = matriu_1[-1]
 vector_2 = matriu_2[-1]
 vector_3 = matriu_3[-1]
 
+err_1 = T(x,t_a) - vector_1
+err_2 = T(x,t_a) - vector_2
+err_3 = np.abs(T(x,t_a) - vector_3)
+
+# cas 1 i el seu error
 plt.figure()
-plt.scatter(x, vector_1, label='dt = 0.51*dx^2', color='blue')
-plt.xlabel('x')
-plt.ylabel('T(x)')
-plt.title('Distribució de temperatura a t=0.025 (adimensional)')
-plt.legend()
+plt.scatter(x, vector_1, color='#1B4F72', s = 7)
+plt.xlabel('$\hat{x}$')
+plt.ylabel('$\hat{T}(\hat{x})$')
+plt.title('Distribució de temperatura a $\hat{t}=0.025$ per $\Delta \hat{t} = 0.51\Delta \hat{x}^2$')
 
 plt.figure()
-plt.scatter(x, vector_2, label='dt = 0.49*dx^2', color='orange')
-plt.xlabel('x')
-plt.ylabel('T(x)')
-plt.title('Distribució de temperatura a t=0.025 (adimensional)')
-plt.legend()
+plt.plot(x,err_1, color = '#1B4F72')
+plt.xlabel('$\hat{x}$')
+plt.ylabel('$\hat{T}(\hat{x})$')
+plt.title('Error numèric per $\Delta \hat{t} = 0.51\Delta \hat{x}^2$')
+
+#cas 2 i el seu error
+plt.figure()
+plt.scatter(x, vector_2, color='#922B21', s = 7)
+plt.xlabel('$\hat{x}$')
+plt.ylabel('$\hat{T}(\hat{x})$')
+plt.title('Distribució de temperatura a $\hat{t}=0.025$ per $\Delta \hat{t} = 0.49\Delta \hat{x}^2$')
 
 plt.figure()
-plt.scatter(x, vector_3, label='dt = 0.25*dx^2', color='green')
-plt.xlabel('x')
-plt.ylabel('T(x)')
-plt.title('Distribució de temperatura a t=0.025 (adimensional)')
-plt.legend()
+plt.plot(x,err_2, color = '#922B21')
+plt.xlabel('$\hat{x}$')
+plt.ylabel('$\hat{T}(\hat{x})$')
+plt.title('Error numèric per $\Delta \hat{t} = 0.49\Delta \hat{x}^2$')
+
+#cas 3 i el seu error
+plt.figure()
+plt.scatter(x, vector_3, color='#1E8449', s = 7)
+plt.xlabel('$\hat{x}$')
+plt.ylabel('$\hat{T}(\hat{x})$')
+plt.title('Distribució de temperatura a $\hat{t}=0.025$ per $\Delta \hat{t} = 0.25\Delta \hat{x}^2$')
 
 plt.figure()
-plt.title('Distribució de temperatura a t=0.025 (adimensional)')
-plt.plot(x,T(x,t_a), label='solució analítica')
-plt.legend()
+plt.plot(x,err_3, color = '#1E8449')
+plt.xlabel('$\hat{x}$')
+plt.ylabel('$\hat{T}(\hat{x})$')
+plt.title('Error numèric per $\Delta \hat{t} = 0.25\Delta \hat{x}^2$')
+
+#analítica
+plt.figure()
+plt.title('Distribució de temperatura a $\hat{t}=0.025$ analítica')
+plt.plot(x,T(x,t_a))
+plt.xlabel('$\hat{x}$')
+plt.ylabel('$\hat{T}(\hat{x})$')
 plt.show()
 
 #EULER IMPLÍCIT
