@@ -2,12 +2,37 @@ import numpy as np
 import _euler_explicit_ 
 import matplotlib.pyplot as plt
 import _gauss_seidel_ as gs
-from solucio_analitica import T , t_a
+from solucio_analitica import T as T_analitica
+from solucio_problema import beta
+
+
+# Perque els grafics quedin millor
+
+plt.rcParams.update({
+    "font.family": "serif",
+    "mathtext.fontset": "cm", 
+    "font.size": 10,
+    "axes.labelsize": 10,
+    "legend.fontsize": 8,
+    "xtick.labelsize": 9,
+    "ytick.labelsize": 9,
+    "xtick.direction": "in", "ytick.direction": "in",
+    "xtick.top": True, "ytick.right": True,
+    "xtick.minor.visible": True, "ytick.minor.visible": True,
+    "axes.linewidth": 0.8,
+    "lines.linewidth": 1.2,
+    "legend.frameon": False,
+    "figure.dpi": 120,
+    "savefig.bbox": "tight",
+})
+
+
 
 #PARÀMETRES
 
 N = 101
-T_a = 0.459
+T_a = beta
+t_a = 0.025
 x = np.linspace(0, 1, N)
 dx = x[1] - x[0]
 
@@ -15,9 +40,9 @@ dx = x[1] - x[0]
 
 # Els paràmetres d'aquest mètode són:
 dt_4 = dx**2
-dt_5 = 0.5*dx**2
+dt_5 = 0.25*dx**2
 gamma_1 = 1
-gamma_2 = 0.5
+gamma_2 = 0.25
 
 passos_4 = round(0.025/dt_4)
 passos_5 = round(0.025/dt_5)
@@ -69,19 +94,41 @@ for t in range(passos_5):
 
 vector_4 = Matriu_T_4[-1]
 
-plt.scatter(x, vector_4, label='dt = dx^2', color='green')
-plt.xlabel('x')
-plt.ylabel('Temperatura')   
-plt.title('Distribució de temperatura a t=0.025 amb Euler implícit')
-plt.legend()
-plt.show()
+error_4 = np.abs(vector_4-T_analitica(x,t_a))
+
+plt.figure()
+plt.scatter(x, vector_4, color='#1B4F72', s = 7)
+plt.xlabel('$\hat{x}$')
+plt.ylabel('$\hat{T}$')   
+plt.title('Distribució de temperatura a $\hat{t}=0.025$ amb Euler implícit per $\Delta \hat{t}=\Delta \hat{x}^2$')
+
+plt.figure()
+plt.plot(x, error_4, color='#1B4F72')
+plt.xlabel('$\hat{x}$')
+plt.ylabel('$\hat{T}$')   
+plt.title('Error numèric per $\Delta \hat{t}=\Delta \hat{x}^2$')
+
+
+
 
 
 vector_5 = Matriu_T_5[-1]
 
-plt.scatter(x, vector_5, label='dt = 0.5*dx^2', color='blue')
-plt.xlabel('x')
-plt.ylabel('Temperatura')   
-plt.title('Distribució de temperatura a t=0.025 amb Euler implícit')
-plt.legend()
+error_5 = np.abs(vector_5 - T_analitica(x,t_a))
+
+plt.figure()
+plt.scatter(x, vector_5, color='#922B21', s = 7)
+plt.xlabel('$\hat{x}$')
+plt.ylabel('$\hat{T}$')   
+plt.title('Distribució de temperatura a $\hat{t}=0.025$ amb Euler implícit per $\Delta \hat{t}=0.5\Delta \hat{x}^2$')
+
+plt.figure()
+plt.plot(x, error_5, color='#922B21')
+plt.xlabel('$\hat{x}$')
+plt.ylabel('$\hat{T}$')   
+plt.title('Error numèric per $\Delta \hat{t}=0.5\Delta \hat{x}^2$')
 plt.show()
+
+
+
+

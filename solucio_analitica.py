@@ -19,11 +19,6 @@ def T(x,t):
         T[i] = valol
     return T
 
-print(T(x,t_a))
-print(x)
-
-plt.figure()
-plt.plot(x,T(x,t_a))
-plt.show()
-
+#print(T(x,t_a))
+#print(x)
 

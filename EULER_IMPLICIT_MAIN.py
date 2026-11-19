@@ -2,6 +2,28 @@ import numpy as np
 import _euler_explicit_ 
 import matplotlib.pyplot as plt
 
+# Perque els grafics quedin millor
+
+plt.rcParams.update({
+    "font.family": "serif",
+    "mathtext.fontset": "cm", 
+    "font.size": 10,
+    "axes.labelsize": 10,
+    "legend.fontsize": 8,
+    "xtick.labelsize": 9,
+    "ytick.labelsize": 9,
+    "xtick.direction": "in", "ytick.direction": "in",
+    "xtick.top": True, "ytick.right": True,
+    "xtick.minor.visible": True, "ytick.minor.visible": True,
+    "axes.linewidth": 0.8,
+    "lines.linewidth": 1.2,
+    "legend.frameon": False,
+    "figure.dpi": 120,
+    "savefig.bbox": "tight",
+})
+
+
+
 #PARÀMETRES
 
 N = 101
