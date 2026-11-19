@@ -15,6 +15,9 @@ Tc = 36.5
 P_ext = sigma*V_pic**2/(2*L**2)      
 dTc   = P_ext*L**2/kappa                 
 
+#Definim les temperatures màxima (80ºC) i mínima (90ºC) adimensional
 T_50 = (50 - Tc)/dTc                     
 T_80 = (80 - Tc)/dTc 
 
+#Vector de temperatura
+T = np.zeros(N)
