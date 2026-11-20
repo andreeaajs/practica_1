@@ -2,14 +2,14 @@ import numpy as np
 import _euler_explicit_
 from _euler_explicit_ import euler_explicit
 
+#Definim els passos d'espai i temps 
 N = 101
 x = np.linspace(0,1, N)
 dx = x[1] - x[0]
 dt = 0.25 * dx**2                  
 
-malalt = (x >= 0.375) & (x <= 0.625)
-sa = ~malalt
 
+#Definim les constants que ens donen al guió i calculem Pext
 sigma, V_pic, L = 0.472, 40.0, 0.02      
 kappa = 0.56                             
 Tc = 36.5                                
@@ -18,16 +18,17 @@ dTc   = P_ext*L**2/kappa
 cv, rho = 3698, 1081
 alpha = kappa/(cv*rho)
 
-#Definim les temperatures màxima (80ºC) i mínima (90ºC) adimensional
+#Definim les temperatures màxima (80ºC) i mínima (90ºC) adimensional (T=0 correspon a 36.6ºC)
 T_50 = (50 - Tc)/dTc                     
 T_80 = (80 - Tc)/dTc 
 print(T_80, T_50)
 
-
+#Aquest vector és el que utilitzarem per fer la nostra iteració 
 vector = np.zeros(N)
 
+#Definim una funció que ens torni True mentre es compleixin les condicions del problema i False si no es compleixen
 def condicions(T):
-    T_esquerra = T[0:38] 
+    T_esquerra = T[0:38] #Diferenciem la part del vector T en la regió de la esquerra de la part malalta, la part malalta i la part de la dreta d'aquesta
     T_malalt = T[38:63]
     T_dreta = T[63:101]
 
@@ -36,21 +37,22 @@ def condicions(T):
     else: 
         return False 
 
-temps = [vector.copy()]
+temps = [vector.copy()] #Cream un vector per guardar els vectors de tempertatures a cada pas de temps                                                                                                                                                                                              
 
-
+#Aqui fem el bucle que calcula 
 while condicions(vector) == True:
-    nova_fila = vector.copy()
-    for i in range(1, N-1):
+    nova_fila = vector.copy() #còpia per mantenir les fronteres
+    for i in range(1, N-1): 
+        #Fem euler explícit
         nova_fila[i] = vector[i] + _euler_explicit_.euler_explicit(dt, dx, vector[i+1], vector[i], vector[i-1])
-    vector = nova_fila
+    vector = nova_fila   # el nou vector passa a ser l'estat actual
     temps.append(vector.copy())
     
 
-temps = np.array(temps)
-fila_temps_optim = temps[:-1]
-temps_optim = (len(fila_temps_optim) - 1)*dt
-temps_opt_s = temps_optim * L**2/alpha
+temps = np.array(temps) 
+fila_temps_optim = temps[:-1] #Obtenim l'ultim pas guardat
+temps_optim = (len(fila_temps_optim) - 1)*dt #El temps (adimensional) de l'últim estat vàlid
+temps_opt_s = temps_optim * L**2/alpha #Passem el temps adimensional a segons
 
-print('temps òptim:', temps_optim)
-print('en segons:', temps_opt_s)
+print('temps òptim adimensional:', temps_optim)
+print('temps òptim en segons:', temps_opt_s, 's')
