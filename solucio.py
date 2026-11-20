@@ -14,7 +14,9 @@ sigma, V_pic, L = 0.472, 40.0, 0.02
 kappa = 0.56                             
 Tc = 36.5                                
 P_ext = sigma*V_pic**2/(2*L**2)      
-dTc   = P_ext*L**2/kappa                 
+dTc   = P_ext*L**2/kappa    
+cv, rho = 3698, 1081
+alpha = kappa/(cv*rho)
 
 #Definim les temperatures màxima (80ºC) i mínima (90ºC) adimensional
 T_50 = (50 - Tc)/dTc                     
@@ -46,6 +48,9 @@ while condicions(vector) == True:
     
 
 temps = np.array(temps)
-bo = temps[:-1]
-print('temps òptim:', (len(bo) - 1)*dt)
+fila_temps_optim = temps[:-1]
+temps_optim = (len(fila_temps_optim) - 1)*dt
+temps_opt_s = temps_optim * L**2/alpha
 
+print('temps òptim:', temps_optim)
+print('en segons:', temps_opt_s)
