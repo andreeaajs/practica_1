@@ -1,6 +1,7 @@
 import numpy as np
+import _euler_explicit_ 
 import matplotlib.pyplot as plt
-
+from solucio_analitica import T
 
 # Perque els grafics quedin millor------------------------------------------------------------
 
@@ -45,3 +46,7 @@ N = 101
 t_a = 0.025
 T_a = 0.459
 x = np.linspace(0, 1, N)
+
+
+
+

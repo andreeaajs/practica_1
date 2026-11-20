@@ -3,8 +3,7 @@ import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 from matplotlib.animation import PillowWriter
 
-from main import x, matriu_1, matriu_2, matriu_3, dt_1, dt_2, dt_3
-from Euler_implicit_bo import Matriu_T_4, Matriu_T_5, dt_4, dt_5
+from Euler_explicit import x, matriu_1, matriu_2, matriu_3, dt_1, dt_2, dt_3
 
 
 def crear_animacio(matriu, dt, nom_fitxer):
@@ -39,9 +38,3 @@ def crear_animacio(matriu, dt, nom_fitxer):
 crear_animacio(matriu_1, dt_1, 'Euler_explicit_051.gif')
 crear_animacio(matriu_2, dt_2, 'Euler_explicit_049.gif')
 crear_animacio(matriu_3, dt_3, 'Euler_explicit_025.gif')
-
-#ANIMACIONS EULER IMPLÍCIT
-crear_animacio(Matriu_T_4, dt_4, 'Euler_implicit_1.gif')
-crear_animacio(Matriu_T_5, dt_5, 'Euler_implicit_050.gif')
-
-plt.show()
