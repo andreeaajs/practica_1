@@ -40,9 +40,9 @@ dx = x[1] - x[0]
 
 # Els paràmetres d'aquest mètode són:
 dt_4 = dx**2
-dt_5 = 0.25*dx**2
+dt_5 = 0.5*dx**2
 gamma_1 = 1
-gamma_2 = 0.25
+gamma_2 = 0.5
 
 passos_4 = round(0.025/dt_4)
 passos_5 = round(0.025/dt_5)

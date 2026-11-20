@@ -2,7 +2,7 @@ import numpy as np
 import _euler_explicit_ 
 import matplotlib.pyplot as plt
 import _gauss_seidel_ as gs
-from solucio_analitica import T
+from solucio_analitica import T as T_analitica
 
 # Perque els grafics quedin millor
 
@@ -75,6 +75,10 @@ for t in range(passos_4):
 
 
 vector_4 = Matriu_T_4[-1]
+
+error_4 = np.abs(vector_4 - T_analitica(x,t_a))
+
+
 #print(vector_4)
 
 plt.figure()
@@ -83,7 +87,12 @@ plt.xlabel('x')
 plt.ylabel('Temperatura')   
 plt.title('Distribució de temperatura amb Crank-Nicolson gamma=1')
 plt.legend()
-plt.show()
+
+plt.figure()
+plt.plot(x,error_4)
+plt.xlabel('x')
+plt.ylabel('Temperatura')   
+plt.title('Distribució de temperatura amb Crank-Nicolson gamma=1')
 
 
 # Repetim tot l'anterior per a dt_5 ------------------------------------------------------
@@ -120,12 +129,11 @@ plt.scatter(x, vector_5)
 plt.xlabel('x')
 plt.ylabel('Temperatura')   
 plt.title('Distribució de temperatura amb Crank-Nicolson gamma=0.5')
-plt.show()
 
-err_4 = np.abs(T(x,t_a)-vector_5)
+err_5 = np.abs(T_analitica(x,t_a)-vector_5)
 
 plt.figure()
-plt.plot(x,err_4)
+plt.plot(x,err_5)
 plt.xlabel('x')
 plt.ylabel('Temperatura')   
 plt.title('Error numèric amb Crank-Nicolson gamma=0.5')
