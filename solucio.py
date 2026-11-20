@@ -6,6 +6,7 @@ N = 101
 x = np.linspace(0,1, N)
 dx = x[1] - x[0]
 dt = 0.25 * dx**2                  
+T_a = 0.459
 
 malalt = (x >= 0.375) & (x <= 0.625)
 sa = ~malalt
@@ -19,43 +20,52 @@ dTc   = P_ext*L**2/kappa
 #Definim les temperatures màxima (80ºC) i mínima (90ºC) adimensional
 T_50 = (50 - Tc)/dTc                     
 T_80 = (80 - Tc)/dTc 
+print(T_80, T_50)
 
 
-def simulacio(t_off, t_final):
-#Vector de temperatura
-    T = np.zeros(N)
-    n_passos = int(t_final/dt)
-    n_off = int(t_off/dt)
+matriu_1 = np.array([[T_a]*N], dtype=float)
+vector = matriu_1[-1]
 
-    temps = 0.0
-    temps_sa = 0.0
-    temps_Tmax = 0.0
+def condicions(Tmax, Tmin):
+    T_esquerra = vector[0:38] 
+    T_dreta = vector[38:62]
+    T_malalt = vector[62:101]
 
-    for n in range(n_passos):
-        if n < n_off:
-            q = 1.0
-        else:
-            q = 0.0
+    if np.max(T_esquerra) < Tmax and np.max(T_dreta) < Tmax and np.max(T_malalt) < 80:
+        return True 
+    else: 
+        return False 
 
-        #Euler explícit
-        T_nou = T.copy()
-        for i in range(1, N-1):
-            T_nou[i] = T[i] + _euler_explicit_.euler_explicit(dt, dx, T[i+1], T[i], T[i-1])
-        T = np.vstack([T, T_nou])
 
-        n_malalts = 0
-        n_malalts_banda = 0 
-        sa_supera_50 = False 
 
-        for i in range(N):
+while condicions(T_80, T_50) == True:
+    nova_fila = matriu_1[i].copy()
+    for i in range(1, N-1):
+        nova_fila[i] = matriu_1[i] + _euler_explicit_.euler_explicit(dt, dx, matriu_1[i+1], matriu_1[i], matriu_1[i-1])
+    matriu_1 = np.vstack([matriu_1, nova_fila])
 
-            if malalt[i]:
-                n_malalts += 1
-                if T[i] >= T_50 and T[i] < T_80:
-                    n_malalts_banda += 1 
-            
-            else:
-                if T[i] >= T_50:
-                    sa_supera_50 += 1 
+vector_temp = matriu_1[-1]  
+
+print('hola')
+print(matriu_1)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
