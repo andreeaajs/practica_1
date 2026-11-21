@@ -3,6 +3,30 @@ import matplotlib.pyplot as plt
 import _euler_explicit_
 from _euler_explicit_ import euler_explicit
 
+
+#Per l'estètica de la gràfica 
+
+plt.rcParams.update({
+    "font.family": "serif",
+    "mathtext.fontset": "cm", 
+    "font.size": 10,
+    "axes.labelsize": 10,
+    "legend.fontsize": 8,
+    "xtick.labelsize": 9,
+    "ytick.labelsize": 9,
+    "xtick.direction": "in", "ytick.direction": "in",
+    "xtick.top": True, "ytick.right": True,
+    "xtick.minor.visible": True, "ytick.minor.visible": True,
+    "axes.linewidth": 0.8,
+    "lines.linewidth": 1.2,
+    "legend.frameon": False,
+    "figure.dpi": 120,
+    "savefig.bbox": "tight",
+})
+
+
+
+
 #Definim els passos d'espai i temps 
 N = 101
 x = np.linspace(0,1, N)
@@ -62,10 +86,17 @@ x_cm = x * L * 100                           # passem x̂ a cm
 
 print('Temps òptim adimensional:', temps_optim)
 print('Temps òptim en segons:', temps_opt_s, 's')
-print(T_50, T_80)
-
+print('Temperatura de la forntera del teixit malalt i el sa:')
+print('Frontera teixit sa:', T_final[37], 'ºC.', 'Frontera teixit malalt', T_final[38], 'ºC.') 
+#La part del teixit malalt no sobrepassa quai els 50ºC pq com veiem, la diferencia de temperatures entre les fronteres és molt petita,
+#per tant, quan el teixit malalt arriba als 50ºC, la temperatura de la part de la frontera del teixit sa amb el malalt està quasi a 50ºC
 
 #Representació de la distribució de temperatures en l'intant que s'apaga la font
 plt.figure()
 plt.plot(x_cm, T_final)
+plt.axvspan(0.375*L*100, 0.625*L*100, color='tab:blue', alpha=0.2, label='Teixit malalt')
+plt.axhline(50, color = 'orange', linestyle = '--', label = '50ºC')
+plt.xlabel('Distància x (cm)')
+plt.ylabel('Temperatura (ºC)')
+plt.legend()
 plt.show()
