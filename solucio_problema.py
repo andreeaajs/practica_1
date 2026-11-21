@@ -87,7 +87,8 @@ x_cm = x * L * 100                           # passem x̂ a cm
 print('Temps òptim adimensional:', temps_optim)
 print('Temps òptim en segons:', temps_opt_s, 's')
 print('Temperatura de la forntera del teixit malalt i el sa:')
-print('Frontera teixit sa:', T_final[37], 'ºC.', 'Frontera teixit malalt', T_final[38], 'ºC.') 
+print('Frontera teixit sa:', T_final[37], 'ºC.', 'Frontera teixit malalt', T_final[38], 'ºC.')
+print('Temperatura al mig del teixit malalt:', T_final[50]) 
 #La part del teixit malalt no sobrepassa quai els 50ºC pq com veiem, la diferencia de temperatures entre les fronteres és molt petita,
 #per tant, quan el teixit malalt arriba als 50ºC, la temperatura de la part de la frontera del teixit sa amb el malalt està quasi a 50ºC
 
