@@ -2,7 +2,7 @@ import numpy as np
 import _euler_explicit_ 
 import matplotlib.pyplot as plt
 import _gauss_seidel_ as gs
-from solucio_analitica import T as T_analitica
+from Solucio_analitica import T as T_analitica
 
 # Perque els grafics quedin millor
 

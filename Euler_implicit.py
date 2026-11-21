@@ -2,7 +2,7 @@ import numpy as np
 import _euler_explicit_ 
 import matplotlib.pyplot as plt
 import _gauss_seidel_ as gs
-from solucio_analitica import T , t_a
+from Solucio_analitica import T , t_a
 
 #PARÀMETRES
 

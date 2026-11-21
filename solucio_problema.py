@@ -1,4 +1,5 @@
 import numpy as np
+import matplotlib.pyplot as plt
 import _euler_explicit_
 from _euler_explicit_ import euler_explicit
 
@@ -53,5 +54,18 @@ fila_temps_optim = temps[:-1] #Obtenim l'ultim pas guardat
 temps_optim = (len(fila_temps_optim) - 1)*dt #El temps (adimensional) de l'últim estat vàlid
 temps_opt_s = temps_optim * L**2/alpha #Passem el temps adimensional a segons
 
+# Perfil de temperatura a l'instant òptim
+T_final_adim = fila_temps_optim[-1]          # última fila de la matriu de temps
+T_final = Tc + dTc * T_final_adim            # passem a ºC: T = Tc + T̂·dTc
+x_cm = x * L * 100                           # passem x̂ a cm
+
+
 print('Temps òptim adimensional:', temps_optim)
 print('Temps òptim en segons:', temps_opt_s, 's')
+print(T_50, T_80)
+
+
+#Representació de la distribució de temperatures en l'intant que s'apaga la font
+plt.figure()
+plt.plot(x_cm, T_final)
+plt.show()

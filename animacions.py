@@ -5,6 +5,7 @@ from matplotlib.animation import PillowWriter
 
 from Euler_explicit import x, matriu_1, matriu_2, matriu_3, dt_1, dt_2, dt_3
 
+#LES ANIMACIONS ES PODEN VEURE A LA CARPETA "ANIMAVIONS" DEL REPOSTORI
 
 def crear_animacio(matriu, dt, nom_fitxer):
 
