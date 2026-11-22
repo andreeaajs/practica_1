@@ -111,7 +111,6 @@ plt.title('Error numèric per $\Delta \hat{t}=\Delta \hat{x}^2$')
 
 
 
-
 vector_5 = Matriu_T_5[-1]
 
 error_5 = np.abs(vector_5 - T_analitica(x,t_a))
