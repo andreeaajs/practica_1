@@ -1,7 +1,7 @@
 import numpy as np
 import _euler_explicit_ 
 import matplotlib.pyplot as plt
-from Solucio_analitica import T
+from solucio_analitica import T
 
 # Perque els grafics quedin millor
 

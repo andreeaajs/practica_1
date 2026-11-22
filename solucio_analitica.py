@@ -27,3 +27,5 @@ def T(x,t):
         T[i] = valol
     return T
 
+
+
