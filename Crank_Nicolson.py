@@ -2,14 +2,14 @@ import numpy as np
 import _euler_explicit_ 
 import matplotlib.pyplot as plt
 import _gauss_seidel_ as gs
-from Solucio_analitica import T as T_analitica
+from solucio_analitica import T as T_analitica
 
 # Perque els grafics quedin millor
 
 plt.rcParams.update({
     "font.family": "serif",
     "mathtext.fontset": "cm", 
-    "font.size": 10,
+    "font.size": 10,    
     "axes.labelsize": 10,
     "legend.fontsize": 8,
     "xtick.labelsize": 9,
@@ -82,17 +82,16 @@ error_4 = np.abs(vector_4 - T_analitica(x,t_a))
 #print(vector_4)
 
 plt.figure()
-plt.scatter(x, vector_4, label='dt = dx^2', color='green')
-plt.xlabel('x')
-plt.ylabel('Temperatura')   
-plt.title('Distribució de temperatura amb Crank-Nicolson gamma=1')
-plt.legend()
+plt.scatter(x, vector_4, color = '#1B4F72', s=7)
+plt.xlabel('$\hat{x}$')
+plt.ylabel('$\hat{T}(\hat{x})$')   
+plt.title('Distribució de temperatura amb Crank-Nicolson per $\gamma=1$')
 
 plt.figure()
-plt.plot(x,error_4)
-plt.xlabel('x')
-plt.ylabel('Temperatura')   
-plt.title('Distribució de temperatura amb Crank-Nicolson gamma=1')
+plt.plot(x,error_4, color = '#1B4F72')
+plt.xlabel('$\hat{x}$')
+plt.ylabel('Error numèric')  
+plt.title('Error numèric amb Crank-Nicolson $\gamma=1$')
 
 
 # Repetim tot l'anterior per a dt_5 ------------------------------------------------------
@@ -125,17 +124,17 @@ vector_5 = Matriu_T_5[-1]
 print(vector_5)
 
 plt.figure()
-plt.scatter(x, vector_5)
-plt.xlabel('x')
-plt.ylabel('Temperatura')   
-plt.title('Distribució de temperatura amb Crank-Nicolson gamma=0.5')
+plt.scatter(x, vector_5, color = '#922B21', s=7)
+plt.xlabel('$\hat{x}$')
+plt.ylabel('$\hat{T}(\hat{x})$')      
+plt.title('Distribució de temperatura amb Crank-Nicolson $\gamma=0.5$')
 
 err_5 = np.abs(T_analitica(x,t_a)-vector_5)
 
 plt.figure()
-plt.plot(x,err_5)
-plt.xlabel('x')
-plt.ylabel('Temperatura')   
-plt.title('Error numèric amb Crank-Nicolson gamma=0.5')
+plt.plot(x,err_5, color = '#922B21')
+plt.xlabel('$\hat{x}$')
+plt.ylabel('Error numèric')   
+plt.title('Error numèric amb Crank-Nicolson $\gamma=0.5$')
 plt.show()
 

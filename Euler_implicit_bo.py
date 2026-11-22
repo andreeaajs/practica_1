@@ -2,8 +2,8 @@ import numpy as np
 import _euler_explicit_ 
 import matplotlib.pyplot as plt
 import _gauss_seidel_ as gs
-from Solucio_analitica import T as T_analitica
-from Solucio_problema import beta
+from solucio_analitica import T as T_analitica
+from solucio_analitica import beta
 
 
 # Perque els grafics quedin millor
@@ -99,14 +99,14 @@ error_4 = np.abs(vector_4-T_analitica(x,t_a))
 plt.figure()
 plt.scatter(x, vector_4, color='#1B4F72', s = 7)
 plt.xlabel('$\hat{x}$')
-plt.ylabel('$\hat{T}$')   
-plt.title('Distribució de temperatura a $\hat{t}=0.025$ amb Euler implícit per $\Delta \hat{t}=\Delta \hat{x}^2$')
+plt.ylabel('$\hat{T}(\hat{x})$')   
+plt.title('Distribució de temperatura amb Euler implícit per $\gamma=1$')
 
 plt.figure()
 plt.plot(x, error_4, color='#1B4F72')
 plt.xlabel('$\hat{x}$')
-plt.ylabel('$\hat{T}$')   
-plt.title('Error numèric per $\Delta \hat{t}=\Delta \hat{x}^2$')
+plt.ylabel('Error numèric')
+plt.title('Error numèric amb Euler implícit per $\gamma=1$')
 
 
 
@@ -119,14 +119,14 @@ error_5 = np.abs(vector_5 - T_analitica(x,t_a))
 plt.figure()
 plt.scatter(x, vector_5, color='#922B21', s = 7)
 plt.xlabel('$\hat{x}$')
-plt.ylabel('$\hat{T}$')   
-plt.title('Distribució de temperatura a $\hat{t}=0.025$ amb Euler implícit per $\Delta \hat{t}=0.5\Delta \hat{x}^2$')
-
+plt.ylabel('$\hat{T}(\hat{x})$')   
+plt.title('Distribució de temperatura amb Euler implícit per $\gamma=0.5$')
 plt.figure()
 plt.plot(x, error_5, color='#922B21')
 plt.xlabel('$\hat{x}$')
-plt.ylabel('$\hat{T}$')   
-plt.title('Error numèric per $\Delta \hat{t}=0.5\Delta \hat{x}^2$')
+plt.ylabel('Error numèric')
+plt.title('Error numèric amb Euler implícit per $\gamma=0.5$')
+
 plt.show()
 
 
