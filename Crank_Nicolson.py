@@ -140,4 +140,3 @@ plt.ylabel('Error numèric')
 plt.title('Error numèric amb Crank-Nicolson $\gamma=0.5$')
 
 plt.show()
-

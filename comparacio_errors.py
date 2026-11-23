@@ -46,3 +46,6 @@ plt.ylabel('Error numèric')
 plt.legend(ncol=2, loc="upper center", fontsize=9, columnspacing=1.0)
 plt.tight_layout()
 plt.show()
+
+# Valor màxim dels errors en cada cas.
+print(max(e1), max(e2), max(e3), max(e4), max(e5), max(e6))
