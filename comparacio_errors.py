@@ -1,8 +1,10 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from main import x, err_1 as e1, err_2 as e2, err_3 as e3
-from Euler_implicit_bo import error_4 as e4, error_5 as e5
+from Euler_explicit import x, err_1 as e1, err_2 as e2, err_3 as e3
+from Euler_implicit import error_4 as e4, error_5 as e5
 from Crank_Nicolson import error_4 as e6, err_5 as e7
+
+# Configurem l'estil i el format dels gràfics.
 
 plt.rcParams.update({
     "font.family": "serif",
@@ -23,23 +25,11 @@ plt.rcParams.update({
 })
 
 
-#aquests calculen la T_a (normalitzada) correctament
-sigma, V_pic, L = 0.472, 40.0, 0.02      
-kappa = 0.56                             
-Tc = 36.5                                
-P_ext = sigma*V_pic**2/(2*L**2)        
-dTc   = P_ext*L**2/kappa                 
-
-T_a = (Tc + 273.15)/dTc    
-
-
-
-#-Dibuixem-----------------------------------------------------------
-# paleta de colors
+# Definim els colors de cada mètode.
 c_exp, c_imp, c_cn = "#0072B2", "#D55E00", "#009E73"
 
+# Representem els errors numèrics dels diferents mètodes.
 plt.figure()
-
 
 plt.plot(x,e2, "-", label='explícit $0.49 \Delta \hat{x}^2$', color = c_exp)
 plt.plot(x,e3, "--", label='explícit $0.25 \Delta \hat{x}^2$', color=c_exp)
@@ -56,5 +46,3 @@ plt.ylabel('Error numèric')
 plt.legend(ncol=2, loc="upper center", fontsize=9, columnspacing=1.0)
 plt.tight_layout()
 plt.show()
-
-
