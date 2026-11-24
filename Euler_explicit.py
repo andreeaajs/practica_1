@@ -135,6 +135,4 @@ plt.plot(x,T(x,t_a))
 plt.xlabel('$\hat{x}$')
 plt.ylabel('$\hat{T}(\hat{x})$')
 
-#plt.show()
-
-print(max(err_1), max(err_2), max(err_3))
+plt.show()

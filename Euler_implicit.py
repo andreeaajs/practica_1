@@ -119,6 +119,4 @@ plt.xlabel('$\hat{x}$')
 plt.ylabel('Error numèric')
 plt.title('Error numèric amb Euler implícit per $\gamma=0.5$')
 
-#plt.show()
-
-print(max(error_4), max(error_5))
+plt.show()
