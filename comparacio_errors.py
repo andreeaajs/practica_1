@@ -7,21 +7,21 @@ from Crank_Nicolson import error_4 as e6, err_5 as e7
 # Configurem l'estil i el format dels gràfics.
 
 plt.rcParams.update({
-    "font.family": "serif",
-    "mathtext.fontset": "cm", 
-    "font.size": 10,
-    "axes.labelsize": 10,
-    "legend.fontsize": 8,
-    "xtick.labelsize": 9,
-    "ytick.labelsize": 9,
-    "xtick.direction": "in", "ytick.direction": "in",
-    "xtick.top": True, "ytick.right": True,
-    "xtick.minor.visible": True, "ytick.minor.visible": True,
-    "axes.linewidth": 0.8,
-    "lines.linewidth": 1.2,
-    "legend.frameon": False,
-    "figure.dpi": 120,
-    "savefig.bbox": "tight",
+    "font.family": "serif", # font de la lletra
+    "mathtext.fontset": "cm", # les formules es fan amb "computer modern" igual que LaTeX
+    "font.size": 10, # mida de la lletra
+    "axes.labelsize": 10, # mida de les etiquetes
+    "legend.fontsize": 8, # mida del text de la llegenda
+    "xtick.labelsize": 9, # mida dels números de les marques dels eixos
+    "ytick.labelsize": 9, 
+    "xtick.direction": "in", "ytick.direction": "in", # Les marques cap a "dins"
+    "xtick.top": True, "ytick.right": True, # dibuxa també marques als costats dret i superior
+    "xtick.minor.visible": True, "ytick.minor.visible": True, # Afegeix marques menors
+    "axes.linewidth": 0.8, # Gruix de la caixa dels eixos
+    "lines.linewidth": 1.2, # gruix de les corbes de plot
+    "legend.frameon": False, # Treu la quadricula
+    "figure.dpi": 120, # marca la resolució
+    "savefig.bbox": "tight", # si es guarda la figura, retalla l'espai en blanc
 })
 
 
@@ -39,13 +39,12 @@ plt.plot(x,e6, "-", label='C-N $ \Delta \hat{x}^2$', color=c_cn)
 plt.plot(x,e7, "--", label='C-N $0.5 \Delta \hat{x}^2$', color=c_cn)
 
 plt.ylim(0,1.8*10**(-5))
-plt.title('Comparació dels errors numèrics dels diferents mètodes')
 plt.xlabel('$\hat{x}$')
 plt.ylabel('Error numèric')
 
 plt.legend(ncol=2, loc="upper center", fontsize=9, columnspacing=1.0)
 plt.tight_layout()
-#plt.show()
+plt.show()
 
 # Valor màxim dels errors en cada cas.
 print('Error màxim Euler explícit amb gamma 0.51:', max(e1))

@@ -5,6 +5,27 @@ from matplotlib.animation import PillowWriter
 
 from Euler_explicit import x, matriu_1, matriu_2, matriu_3, dt_1, dt_2, dt_3
 
+# Configurem l'estil i el format dels gràfics.
+
+plt.rcParams.update({
+    "font.family": "serif", # font de la lletra
+    "mathtext.fontset": "cm", # les formules es fan amb "computer modern" igual que LaTeX
+    "font.size": 10, # mida de la lletra
+    "axes.labelsize": 10, # mida de les etiquetes
+    "legend.fontsize": 8, # mida del text de la llegenda
+    "xtick.labelsize": 9, # mida dels números de les marques dels eixos
+    "ytick.labelsize": 9, 
+    "xtick.direction": "in", "ytick.direction": "in", # Les marques cap a "dins"
+    "xtick.top": True, "ytick.right": True, # dibuxa també marques als costats dret i superior
+    "xtick.minor.visible": True, "ytick.minor.visible": True, # Afegeix marques menors
+    "axes.linewidth": 0.8, # Gruix de la caixa dels eixos
+    "lines.linewidth": 1.2, # gruix de les corbes de plot
+    "legend.frameon": False, # Treu la quadricula
+    "figure.dpi": 120, # marca la resolució
+    "savefig.bbox": "tight", # si es guarda la figura, retalla l'espai en blanc
+})
+
+
 # LES ANIMACIONS ES PODEN VEURE A LA CARPETA "ANIMACIONS" DEL REPOSTORI.
 
 # Definim una funció per generar i guardar l'animació de la temperatura.

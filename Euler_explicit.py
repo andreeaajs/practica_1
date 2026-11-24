@@ -7,21 +7,21 @@ from solucio_analitica import T, beta
 # Configurem l'estil i el format dels gràfics.
 
 plt.rcParams.update({
-    "font.family": "serif",
-    "mathtext.fontset": "cm", 
-    "font.size": 10,
-    "axes.labelsize": 10,
-    "legend.fontsize": 8,
-    "xtick.labelsize": 9,
-    "ytick.labelsize": 9,
-    "xtick.direction": "in", "ytick.direction": "in",
-    "xtick.top": True, "ytick.right": True,
-    "xtick.minor.visible": True, "ytick.minor.visible": True,
-    "axes.linewidth": 0.8,
-    "lines.linewidth": 1.2,
-    "legend.frameon": False,
-    "figure.dpi": 120,
-    "savefig.bbox": "tight",
+    "font.family": "serif", # font de la lletra
+    "mathtext.fontset": "cm", # les formules es fan amb "computer modern" igual que LaTeX
+    "font.size": 10, # mida de la lletra
+    "axes.labelsize": 10, # mida de les etiquetes
+    "legend.fontsize": 8, # mida del text de la llegenda
+    "xtick.labelsize": 9, # mida dels números de les marques dels eixos
+    "ytick.labelsize": 9, 
+    "xtick.direction": "in", "ytick.direction": "in", # Les marques cap a "dins"
+    "xtick.top": True, "ytick.right": True, # dibuxa també marques als costats dret i superior
+    "xtick.minor.visible": True, "ytick.minor.visible": True, # Afegeix marques menors
+    "axes.linewidth": 0.8, # Gruix de la caixa dels eixos
+    "lines.linewidth": 1.2, # gruix de les corbes de plot
+    "legend.frameon": False, # Treu la quadricula
+    "figure.dpi": 120, # marca la resolució
+    "savefig.bbox": "tight", # si es guarda la figura, retalla l'espai en blanc
 })
 
 
@@ -91,43 +91,36 @@ plt.figure()
 plt.scatter(x, vector_1, color='#1B4F72', s = 7)
 plt.xlabel('$\hat{x}$')
 plt.ylabel('$\hat{T}(\hat{x})$')
-plt.title('Distribució de temperatura a $\hat{t}=0.025$ per $\Delta \hat{t} = 0.51\Delta \hat{x}^2$')
 
 plt.figure()
 plt.plot(x,err_1, color = '#1B4F72')
 plt.xlabel('$\hat{x}$')
 plt.ylabel('Error numèric')
-plt.title('Error numèric per $\Delta \hat{t} = 0.51\Delta \hat{x}^2$')
 
 # Cas 2 i el seu error.
 plt.figure()
 plt.scatter(x, vector_2, color='#922B21', s = 7)
 plt.xlabel('$\hat{x}$')
 plt.ylabel('$\hat{T}(\hat{x})$')
-plt.title('Distribució de temperatura a $\hat{t}=0.025$ per $\Delta \hat{t} = 0.49\Delta \hat{x}^2$')
 
 plt.figure()
 plt.plot(x,err_2, color = '#922B21')
 plt.xlabel('$\hat{x}$')
 plt.ylabel('Error numèric')
-plt.title('Error numèric per $\Delta \hat{t} = 0.49\Delta \hat{x}^2$')
 
 # Cas 3 i el seu error.
 plt.figure()
 plt.scatter(x, vector_3, color='#1E8449', s = 7)
 plt.xlabel('$\hat{x}$')
 plt.ylabel('$\hat{T}(\hat{x})$')
-plt.title('Distribució de temperatura a $\hat{t}=0.025$ per $\Delta \hat{t} = 0.25\Delta \hat{x}^2$')
 
 plt.figure()
 plt.plot(x,err_3, color = '#1E8449')
 plt.xlabel('$\hat{x}$')
 plt.ylabel('Error numèric')
-plt.title('Error numèric per $\Delta \hat{t} = 0.25\Delta \hat{x}^2$')
 
 # Solució analítica.
 plt.figure()
-plt.title('Distribució de temperatura a $\hat{t}=0.025$ analítica')
 plt.plot(x,T(x,t_a))
 plt.xlabel('$\hat{x}$')
 plt.ylabel('$\hat{T}(\hat{x})$')

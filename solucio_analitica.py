@@ -16,16 +16,18 @@ N= 101
 x = np.linspace(0, 1, N)
 
 # Calculem la suma parcial de la sèrie de Fourier.
-def sumatori(x,t,N = 2000): 
+def sumatori(x,t,N = 1000): 
     valor = 0
     for n in range(N):
         valor = valor + (1-np.exp(-((2*n+1)*np.pi)**2 * t)) * np.sin((2*n+1)*np.pi*x) / (2*n+1)**3
     return valor
 
 # Calculem la temperatura analítica en cada punt espacial.
-def T(x,t):
+def T(x,temps):
     T = np.zeros(N)
     for i in range(N):
-        valol = beta + (4/(np.pi**3)) * sumatori(x[i],t_a,10**4)
+        valol = beta + (4/(np.pi**3)) * sumatori(x[i],temps,1000)
         T[i] = valol
     return T
+
+print('fet')
