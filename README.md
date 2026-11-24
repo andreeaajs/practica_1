@@ -31,5 +31,5 @@ No cal executar prèviament els altres mètodes per fer la comparació, ja que e
 
 ## 3. Observacions
 
-- Les animacions es generen en format GIF i es guarden al directori des d'on s'executa el programa.
+- Les animacions es generen en format GIF i s'han guarden a la carpeta Animacions.
 - És important mantenir tots els fitxers Python al mateix directori perquè les importacions funcionin correctament.
