@@ -45,7 +45,7 @@ plt.ylabel('Error numèric')
 
 plt.legend(ncol=2, loc="upper center", fontsize=9, columnspacing=1.0)
 plt.tight_layout()
-#plt.show()
+plt.show()
 
 # Valor màxim dels errors en cada cas.
 print('Error màxim Euler explícit amb gamma 0.51:', max(e1))
