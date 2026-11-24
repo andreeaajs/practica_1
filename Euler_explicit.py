@@ -77,14 +77,11 @@ for t in range(passos_t3):
 vector_1 = matriu_1[-1]
 vector_2 = matriu_2[-1]
 vector_3 = matriu_3[-1]
-# El temps final de cada matriu pot diferir lleugerament de t_a a causa de 
-# l'arrodoniment del nombre de passos temporals que hem fet amb el round().
-
 
 # Calculem l'error absolut respecte de la solució analítica.
-err_1 = np.abs(T(x,t_a) - vector_1)
-err_2 = np.abs(T(x,t_a) - vector_2)
-err_3 = np.abs(T(x,t_a) - vector_3)
+err_1 = np.abs(T(x,(passos_t1*dt_1)) - vector_1)
+err_2 = np.abs(T(x,(passos_t2*dt_2)) - vector_2)
+err_3 = np.abs(T(x,(passos_t3*dt_3)) - vector_3)
 
 
 # Representem gràficament la distribució de temperatura i l'error de cada cas:

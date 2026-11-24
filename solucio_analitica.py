@@ -10,7 +10,6 @@ Tc = 36.5
 P_ext = sigma*V_pic**2/(2*L**2)
 dTc   = P_ext*L**2/kappa
 beta = (Tc + 273.15)/dTc
-beta_C = Tc/dTc     #això és necessari?????????
 
 # Discretitzem el domini espacial en N punts equidistants.                      
 N= 101
@@ -30,5 +29,3 @@ def T(x,t):
         valol = beta + (4/(np.pi**3)) * sumatori(x[i],t_a,10**4)
         T[i] = valol
     return T
-
-print(T(x, t_a))    #aixo no cal!!!!

@@ -45,7 +45,13 @@ plt.ylabel('Error numèric')
 
 plt.legend(ncol=2, loc="upper center", fontsize=9, columnspacing=1.0)
 plt.tight_layout()
-plt.show()
+#plt.show()
 
 # Valor màxim dels errors en cada cas.
-print(max(e1), max(e2), max(e3), max(e4), max(e5), max(e6))
+print('Error màxim Euler explícit amb gamma 0.51:', max(e1))
+print('Error màxim Euler explícit amb gamma 0.49:', max(e2))
+print('Error màxim Euler explícit amb gamma 0.25:', max(e3))
+print('Error màxim Euler implícit amb gamma 1:', max(e4))
+print('Error màxim Euler implícit amb gamma 0.5:', max(e5))
+print('Error màxim Cranck-Nicolson amb gamma 1:', max(e6))
+print('Error màxim Cranck-Nicolson amb gamma 0.5:', max(e7))

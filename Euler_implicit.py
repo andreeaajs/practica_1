@@ -79,15 +79,12 @@ for t in range(passos_5):
     Matriu_T_5[t+1] = nou
     iters_5[t+1] = its
 
-# El temps final de cada matriu pot diferir lleugerament de t_a a causa de 
-# l'arrodoniment del nombre de passos temporals que hem fet amb el round().
-
 
 # Representació gràfica dels resultats:
 
 # Distribució final i error absolut.
 vector_4 = Matriu_T_4[-1]
-error_4 = np.abs(vector_4-T_analitica(x,t_a))
+error_4 = np.abs(T_analitica(x, (passos_4*dt_4)) - vector_4)
 
 # Representem la distribució de temperatura i l'error del primer cas.
 plt.figure()
@@ -104,7 +101,7 @@ plt.title('Error numèric amb Euler implícit per $\gamma=1$')
 
 # Distribució final i error absolut.
 vector_5 = Matriu_T_5[-1]
-error_5 = np.abs(vector_5 - T_analitica(x,t_a))
+error_5 = np.abs(T_analitica(x, (passos_5*dt_5)) - vector_5)
 
 # Representem la distribució de temperatura i l'error del segon cas.
 plt.figure()

@@ -78,7 +78,7 @@ for t in range(passos_4):
 
 # Distribució final i error absolut.
 vector_4 = Matriu_T_4[-1]
-error_4 = np.abs(vector_4 - T_analitica(x,t_a))
+error_4 = np.abs(T_analitica(x, (passos_4*dt_4)) - vector_4)
 
 
 # Representem la distribució de temperatura i l'error del primer cas.
@@ -122,7 +122,7 @@ for t in range(passos_5):
 
 # Distribució final i error absolut.
 vector_5 = Matriu_T_5[-1]
-err_5 = np.abs(T_analitica(x,t_a)-vector_5)
+err_5 = np.abs(T_analitica(x, (passos_5*dt_5))-vector_5)
 
 print(vector_5)
 
